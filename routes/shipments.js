@@ -17,19 +17,14 @@ const shipmentsSchema = require("../schemas/shipmentsSchema.json");
  * Returns { shipped: shipId }
  */
 router.post("/", async function (req, res, next) {
-  try {
-    const result = jsonschema.validate(req.body, shipmentsSchema);
-    if (!result.valid) {
-      let errs = result.errors.map(err => err.stack);
-      throw new BadRequestError(errs);
-    } else {
-      const { productId, name, addr, zip } = req.body;
-      const shipId = await shipProduct({ productId, name, addr, zip });
-      return res.json({ shipped: shipId });
+    const validator = jsonschema.validate(req.body, shipmentsSchema);
+    if (!validator.valid) {
+      let errmessages = validator.errors.map(errMsg => errMsg.stack);
+      throw new BadRequestError(errmessages);
     }
-  } catch (err) {
-    return next(err)
-  }
+    const { productId, name, addr, zip } = req.body;
+    const shipId = await shipProduct({ productId, name, addr, zip });
+    return res.json({ shipped: shipId });
 });
 
 

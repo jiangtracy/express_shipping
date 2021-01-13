@@ -55,4 +55,18 @@ describe("POST /", function () {
       "instance is not allowed to have the additional property \"price\""],
         "status": 400 }});
   });
+
+
+  test("test missing properties", async function () {
+    const resp = await request(app).post("/shipments").send({
+      productId: 1000,
+    });
+
+    expect(resp.body).toEqual({"error": {"message": [
+      "instance requires property \"name\"",
+      "instance requires property \"addr\"",
+      "instance requires property \"zip\""],
+        "status": 400 }});
+  });
+
 });
