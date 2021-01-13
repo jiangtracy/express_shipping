@@ -16,24 +16,18 @@ const shipmentsSchema = require("../schemas/shipmentsSchema.json");
  *
  * Returns { shipped: shipId }
  */
-
 router.post("/", async function (req, res, next) {
-  console.log("made to route");
   try {
-    console.log("inside try");
     const result = jsonschema.validate(req.body, shipmentsSchema);
     if (!result.valid) {
-      console.log("inside if");
       let errs = result.errors.map(err => err.stack);
       throw new BadRequestError(errs);
     } else {
-      console.log("else");
       const { productId, name, addr, zip } = req.body;
       const shipId = await shipProduct({ productId, name, addr, zip });
       return res.json({ shipped: shipId });
     }
   } catch (err) {
-    console.log("inside error");
     return next(err)
   }
 });

@@ -18,5 +18,13 @@
     "jsonschema": "^1.2.6",
     "supertest": "^4.0.2"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiangtracy/express_shipping.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jiangtracy/express_shipping/issues"
+  },
+  "homepage": "https://github.com/jiangtracy/express_shipping#readme",
   "description": ""
 }

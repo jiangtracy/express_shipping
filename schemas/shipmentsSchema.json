@@ -15,7 +15,7 @@
     "addr": {
       "type": "string"
     },
-    "zipcode": {
+    "zip": {
       "type": "string"
     }
   },
@@ -24,6 +24,6 @@
     "productId",
     "name",
     "addr",
-    "zipcode"
+    "zip"
   ]
 }
