@@ -29,6 +29,5 @@ test("shipProduct with mocking axios call", async function () {
     zip: "12345-6789",
   })
 
-  console.log("shipid", shipId);
   expect(shipId).toEqual( 1 );
 });
